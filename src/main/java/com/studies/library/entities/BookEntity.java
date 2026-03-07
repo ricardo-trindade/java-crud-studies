@@ -2,7 +2,6 @@ package com.studies.library.entities;
 
 import com.studies.library.enums.Status;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,19 +13,20 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "books")
+@AllArgsConstructor // Cria construtores com argumentos
+@NoArgsConstructor // Cria construtores vazios
+@Entity // Indica uma entidade
+@Table(name = "books") // Indica uma tabela no banco de dados
 public class BookEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id // Primary Key
+    @GeneratedValue(strategy = GenerationType.AUTO) // Auto inserção
     private UUID bookId;
 
     private String title;
     private String author;
 
+    // "unique = true" indica que não pode ter outro dado igual
     @Column(unique = true)
     private String isbn;
 
