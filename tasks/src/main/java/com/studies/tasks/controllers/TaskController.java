@@ -9,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/tasks")
 @RequiredArgsConstructor
 public class TaskController {
 
@@ -20,6 +22,12 @@ public class TaskController {
     public ResponseEntity<TaskResponseDTO> createTask(@RequestBody @Valid TaskRequestDTO dto) {
         TaskResponseDTO response = service.createTask(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping
+    public ResponseEntity <List<TaskResponseDTO>> findAll() {
+        List<TaskResponseDTO> response = service.findAll();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{title}")
