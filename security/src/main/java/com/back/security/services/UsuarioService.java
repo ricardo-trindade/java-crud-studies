@@ -25,6 +25,8 @@ public class UsuarioService {
         );
     }
 
+
+
     @Transactional
     public UsuarioResponseDTO criarUsuario(UsuarioRequestDTO dto) {
         Usuario usuario = new Usuario();

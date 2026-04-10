@@ -5,22 +5,24 @@ import com.back.security.DTO.UsuarioResponseDTO;
 import com.back.security.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("users")
 @RequiredArgsConstructor
 public class UsuarioController {
 
     private final UsuarioService service;
 
-    @PostMapping
+    @PostMapping("users")
     public ResponseEntity criarUsuario(@RequestBody UsuarioRequestDTO dto) {
         return ResponseEntity.ok(service.criarUsuario(dto));
     }
+
+    @GetMapping("/admin")
+    public String admin() {
+        return "Acesso ADMIN";
+    }
+
 
 
 }
